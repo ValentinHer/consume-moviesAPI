@@ -1,7 +1,5 @@
 # Consume MoviesAPI
 
-==
-
 ## Configuration
 
 1. Clone or download the .zip file of this repository
