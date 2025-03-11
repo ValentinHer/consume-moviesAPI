@@ -2,28 +2,64 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh; /* Ocupa toda la altura de la pantalla */
-    background-color: #f0f0f0; /* Fondo gris claro */
+    height: 100vh; 
+    background-color: #f0f0f0;
     flex-direction: column;
   }
   
   .loader {
-    font-size: 48px; /* Tamaño del ícono */
-    color: #3498db; /* Color azul del ícono */
-    animation: spin 2s linear infinite; /* Animación de giro */
+    font-size: 48px;
+    color: #3498db;
+    animation: spin 2s linear infinite; 
   }
   
   @keyframes spin {
     0% {
-      transform: rotate(0deg); /* Inicio de la animación */
+      transform: rotate(0deg); 
     }
     100% {
-      transform: rotate(360deg); /* Fin de la animación */
+      transform: rotate(360deg); 
     }
   }
   
   p {
-    margin-top: 16px; /* Espacio entre el ícono y el texto */
-    font-size: 18px; /* Tamaño del texto */
-    color: #333; /* Color del texto */
+    margin-top: 16px; 
+    font-size: 18px; 
+    color: #333;.loading-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; 
+    background-color: #f0f0f0;
+    flex-direction: column;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.loader {
+    font-size: 48px;
+    color: #3498db;
+    animation: spin 2s linear infinite; 
+    transition: transform 0.5s ease-in-out;
+}
+
+@keyframes spin {
+    0% {
+      transform: rotate(0deg); 
+    }
+    100% {
+      transform: rotate(360deg); 
+    }
+}
+
+p {
+    margin-top: 16px; 
+    font-size: 18px; 
+    color: #333;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.loading-container.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
   }
