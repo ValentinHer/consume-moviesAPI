@@ -1,13 +1,19 @@
+import "../styles/Net_err.css";
+import "../styles/custom-bootstrap-colors.scss"
+import logo from '../assets/imgs/error.png';
+
+
 function Net_err() {
     return (
       <>
-      <div className="mainContainer container-fluid bg-dark d-flex justify-content-center align-items-center" >
+      <div className="mainContainer container-fluid d-flex justify-content-center align-items-center" >
         <div className="row">
           <div className="col">
-            <h1 className="text-white">1</h1>
+            <img src={logo} className="img-fluid" alt="..."></img>
           </div>
-          <div className="col">
-            <h1 className="text-white">2</h1>
+          <div className="col d-flex align-items-center">
+            <h1 className="text-white">Opps...</h1>
+            <h1 className="text-white">Parece que no tienes internet</h1>
           </div>
         </div>
       </div>
