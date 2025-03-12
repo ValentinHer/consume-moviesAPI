@@ -9,7 +9,7 @@ const LoadingScreen = () => {
       <div className="loader">
         <FontAwesomeIcon icon={faHourglass} /> 
       </div>
-      <p>Cargando...</p>
+      <p>CargandoPXNDX...</p>
     </div>
   );
 };
