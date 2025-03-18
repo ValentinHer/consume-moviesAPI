@@ -11,9 +11,20 @@ function Net_err() {
           <div className="col">
             <img src={logo} className="img-fluid" alt="..."></img>
           </div>
-          <div className="col d-flex align-items-center">
-            <h1 className="text-white">Opps...</h1>
-            <h1 className="text-white">Parece que no tienes internet</h1>
+
+          <div className="conten_msj col">
+            <div className="container text-center">
+              
+              <div className="col">
+                <h1 className="text-white">Opps...</h1>
+              </div>
+
+              <div className="col">
+                <h1 className="text-white">Parece que no tienes internet</h1>
+              </div>
+            
+            </div>
+            
           </div>
         </div>
       </div>
