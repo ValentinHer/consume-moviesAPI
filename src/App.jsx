@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import "./styles/app.css";
 import {} from "bootstrap";
 import { getGenres } from "./hooks/movie-genres";
-import { getMovie, getMoviesByActor, getMoviesByGenre } from "./hooks/movies";
+import { getCastForMovie, getMovie, getMoviesByActor, getMoviesByGenre } from "./hooks/movies";
 import { findPerson } from "./hooks/movie-person";
 
 function App() {
@@ -31,6 +31,19 @@ function App() {
     const movies = response.data.results;
     return movies;
   };
+
+  const setCastWithMovies = async(movies) => {
+    const moviesChanged = [];
+    for(let i=0;i<movies.length;i++){
+      const getCast = await getCastForMovie(movies[i].id);
+      const cast = getCast.data.cast;
+      const dataMovieChanged = {...movies[i], cast: cast};
+      moviesChanged.push(dataMovieChanged);
+    }
+
+    // console.log(moviesChanged);
+    setSearchedMovies(moviesChanged);
+  }
 
   const onSubmit = async () => {
     //Buscar el genero por el nombre
@@ -87,7 +100,9 @@ function App() {
       allMovies.push(...movies);
     }
 
-    setSearchedMovies(allMovies);
+    await setCastWithMovies(allMovies);
+
+    // setSearchedMovies(allMovies);
     // console.log(allMovies);
 
     // const removeMoviesDuplicated = []
