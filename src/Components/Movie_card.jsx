@@ -3,8 +3,7 @@ import "../styles/custom-bootstrap-colors.scss"
 import logo from '../assets/imgs/error.png';
 
 
-
-function Movie_card({img, titulo, descripcion, fecha_estreno}) {
+function Movie_card({img, titulo, descripcion, reparto}) {
     return (
       <>
       <div className="card text-bg-light mb-3">
@@ -14,7 +13,7 @@ function Movie_card({img, titulo, descripcion, fecha_estreno}) {
             <p className="card-text">{descripcion}</p>
         </div>
         <div className="card-footer">
-            <small className="text-body-secondary">{fecha_estreno}</small>
+            <small className="text-body-secondary">{reparto}</small>
         </div>
       </div>
       </>
