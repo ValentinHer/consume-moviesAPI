@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import "./styles/app.css";
+import { useState } from "react";
+//import "./styles/app.css";
 import {} from "bootstrap";
 import { getGenres } from "./hooks/movie-genres";
 import { getCastForMovie, getMovie, getMoviesByActor, getMoviesByGenre } from "./hooks/movies";
