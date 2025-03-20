@@ -1,9 +1,15 @@
-import { useState } from "react";
-//import "./styles/app.css";
-import {} from "bootstrap";
+import { useState, useEffect } from "react";
+// import "./styles/app.css";
+// import {} from "bootstrap";
 import { getGenres } from "./hooks/movie-genres";
-import { getCastForMovie, getMovie, getMoviesByActor, getMoviesByGenre } from "./hooks/movies";
+import {
+  getCastForMovie,
+  getMovie,
+  getMoviesByActor,
+  getMoviesByGenre,
+} from "./hooks/movies";
 import { findPerson } from "./hooks/movie-person";
+import Movie_card from "./Components/Movie_card";
 
 function App() {
   const [valueBuscador, setValueBuscador] = useState("");
@@ -32,18 +38,18 @@ function App() {
     return movies;
   };
 
-  const setCastWithMovies = async(movies) => {
+  const setCastWithMovies = async (movies) => {
     const moviesChanged = [];
-    for(let i=0;i<movies.length;i++){
+    for (let i = 0; i < movies.length; i++) {
       const getCast = await getCastForMovie(movies[i].id);
       const cast = getCast.data.cast;
-      const dataMovieChanged = {...movies[i], cast: cast};
+      const dataMovieChanged = { ...movies[i], cast: cast };
       moviesChanged.push(dataMovieChanged);
     }
 
     // console.log(moviesChanged);
     setSearchedMovies(moviesChanged);
-  }
+  };
 
   const onSubmit = async () => {
     //Buscar el genero por el nombre
@@ -63,7 +69,7 @@ function App() {
     );
     const actorExists =
       actorNameMatches && actorNameMatches.length > 0 ? true : false;
-    console.log(actorNameMatches)
+    console.log(actorNameMatches);
     console.log(actorExists);
 
     //Buscar la pelicula por el nombre
@@ -89,13 +95,13 @@ function App() {
     }
     if (filterMovie.isActor) {
       const allMoviesByActor = [];
-      for(let i=0;i<actorNameMatches.length;i++){
+      for (let i = 0; i < actorNameMatches.length; i++) {
         const movies = await getMoviesByActorId(actorNameMatches[i].id);
         allMoviesByActor.push(...movies);
       }
       allMovies.push(...allMoviesByActor);
     }
-    if(filterMovie.isMovie) {
+    if (filterMovie.isMovie) {
       const movies = searchMovieMatches;
       allMovies.push(...movies);
     }
@@ -118,10 +124,10 @@ function App() {
   return (
     <>
       <div className="mainContainer bg-secondary p-5 container-fluid d-flex justify-content-center align-items-center flex-column">
-        <div class="mb-3 w-50 d-flex">
+        <div className="mb-3 w-50 d-flex">
           <input
             type="email"
-            class="form-control form-control-lg"
+            className="form-control form-control-lg"
             id="exampleFormControlInput1"
             placeholder="Buscar Película"
             value={valueBuscador}
@@ -130,10 +136,37 @@ function App() {
           <button
             type="submit"
             onClick={onSubmit}
-            class="btn btn-primary text-white"
+            className="btn btn-primary text-white"
           >
             Buscar
           </button>
+        </div>
+      </div>
+      {console.log(searchedMovies)}
+      {/* <div className="card-group" >
+      {searchedMovies &&
+        searchedMovies.map((movie) => (
+          <Movie_card
+            key={movie.id}
+            img={movie.poster_path}
+            titulo={movie.title}
+            descripcion={movie.overview}
+            reparto={movie.cast.map((actor) => actor.name)}
+          />
+        ))}
+      </div> */}
+      <div className="container-fluid" >
+        <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+          {searchedMovies &&
+            searchedMovies.map((movie) => (
+              <Movie_card
+                key={movie.id}
+                img={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                titulo={movie.title}
+                descripcion={movie.overview}
+                reparto={movie.cast.map((actor) => actor.name)}
+              />
+            ))}
         </div>
       </div>
     </>
