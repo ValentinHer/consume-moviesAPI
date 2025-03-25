@@ -10,11 +10,13 @@ import {
 } from "./hooks/movies";
 import { findPerson } from "./hooks/movie-person";
 import Movie_card from "./Components/Movie_card";
+import LoadingScreen from "./Components/LoadingScreen";
 
 function App() {
   const [valueBuscador, setValueBuscador] = useState("");
   const [movieGenres, setMovieGenres] = useState([]);
   const [searchedMovies, setSearchedMovies] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (event) => {
     setValueBuscador(event.target.value);
@@ -52,6 +54,7 @@ function App() {
   };
 
   const onSubmit = async () => {
+    setLoading(true);
     //Buscar el genero por el nombre
     const movieGenreMatches = movieGenres.find(
       (movie) => movie.name.toLowerCase() == valueBuscador.toLowerCase()
@@ -142,32 +145,23 @@ function App() {
           </button>
         </div>
       </div>
-      {console.log(searchedMovies)}
-      {/* <div className="card-group" >
-      {searchedMovies &&
-        searchedMovies.map((movie) => (
-          <Movie_card
-            key={movie.id}
-            img={movie.poster_path}
-            titulo={movie.title}
-            descripcion={movie.overview}
-            reparto={movie.cast.map((actor) => actor.name)}
-          />
-        ))}
-      </div> */}
-      <div className="container-fluid" >
-        <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-          {searchedMovies &&
-            searchedMovies.map((movie) => (
-              <Movie_card
-                key={movie.id}
-                img={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                titulo={movie.title}
-                descripcion={movie.overview}
-                reparto={movie.cast.map((actor) => actor.name)}
-              />
-            ))}
-        </div>
+      <div className="container-fluid">
+        {loading ? (
+          <LoadingScreen />
+        ) : (
+          <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 bg-primary">
+            {searchedMovies &&
+              searchedMovies.map((movie) => (
+                <Movie_card
+                  key={movie.id}
+                  img={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                  titulo={movie.title}
+                  descripcion={movie.overview}
+                  reparto={movie.cast.map((actor) => actor.name)}
+                />
+              ))}
+          </div>
+        )}
       </div>
     </>
   );
