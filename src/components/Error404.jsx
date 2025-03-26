@@ -3,12 +3,11 @@ import "../styles/Error404.css";
 
 const Error404 = () => {
   return (
-    <div className="error-container">
-      <div className="error-content">
+    <div className="error-container bg-secondary">
+      <div className="error-content bg-primary">
         <h1>404</h1>
-        <h2>Página no encontrada</h2>
-        <p>Lo sentimos, la página que estás buscando no existe.</p>
-        <a href="/" className="home-link">Volver al inicio</a>
+        <h2>Pelicula no encontrada</h2>
+        <p>Lo sentimos, la pelicula que estás buscando no existe.</p>
       </div>
     </div>
   );

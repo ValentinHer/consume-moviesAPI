@@ -14,6 +14,7 @@ export const getGenres = async() => {
         const response = await axios.get("https://api.themoviedb.org/3/genre/movie/list?language=es", options);
         return response;
     } catch (error) {
-        console.log(error);
+        // console.log(error);
+        return {success: false, message: error.message};
     }
 }

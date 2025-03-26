@@ -14,6 +14,6 @@ export const findPerson = async(actor_name, page=1) => {
         const response = await axios.get(`https://api.themoviedb.org/3/search/person?query=${actor_name}&include_adult=false&language=es-MX&page=${page}`, options);
         return response;
     } catch (error) {
-        console.log(error);
+        return {success: false, message: error.message};
     }
 }

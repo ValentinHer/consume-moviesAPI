@@ -2,14 +2,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh; 
+    height: 78vh; 
     background-color: #f0f0f0;
     flex-direction: column;
   }
   
   .loader {
     font-size: 48px;
-    color: #3498db;
+    color: #161717;
     animation: spin 2s linear infinite; 
   }
   

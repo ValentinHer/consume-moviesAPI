@@ -6,7 +6,7 @@ import logo from '../assets/imgs/error.png';
 function Net_err() {
     return (
       <>
-      <div className="mainContainer container-fluid d-flex justify-content-center align-items-center" >
+      {/* <div className="mainContainer container-fluid d-flex justify-content-center align-items-center" > */}
         <div className="row">
           <div className="col">
             <img src={logo} className="img-fluid" alt="..."></img>
@@ -27,9 +27,9 @@ function Net_err() {
             
           </div>
         </div>
-      </div>
+      {/* </div> */}
       </>
     )
   }
   
-  export default Net_err
+  export default Net_err;

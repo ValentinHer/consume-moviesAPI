@@ -5,11 +5,11 @@ import { faHourglass } from "@fortawesome/free-solid-svg-icons";
 
 const LoadingScreen = () => {
   return (
-    <div className="loading-container">
+    <div className="loading-container bg-secondary">
       <div className="loader">
         <FontAwesomeIcon icon={faHourglass} /> 
       </div>
-      <p>Cargando...</p>
+      <p className="text-light" >Cargando...</p>
     </div>
   );
 };
